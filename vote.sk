@@ -1,0 +1,28 @@
+options:
+  prefix: yourprefix &r #you can change this to what you want, but you NEED a space then &r or it wont work.
+
+
+#DO NOT CHANGE ANYTHING AFTER THIS
+#IF YOU DONT KNOW HOW SKRIPT WORKS!
+
+command /vote:
+  cooldown: 30 minutes
+  cooldown message: &cYou have voted the last 30m!
+  trigger:
+    send "&2Thank you for &6voting!"
+    add 1 to {votes}
+    broadcast "{@prefix}&2has %{votes}% votes"
+
+
+
+command /votereset:
+    permission: vote.reset
+    trigger:
+        set {votes} to 0
+        broadcast "&2The votes has been reseted to %{votes}%"
+
+
+
+command /votes:
+  trigger:
+    send "{@prefix}&2has %{votes}% &2votes!"
