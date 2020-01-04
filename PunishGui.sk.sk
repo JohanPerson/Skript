@@ -7,7 +7,7 @@
 
 
 options:
-  prefix: &2Centenamilia &6>> &r
+  prefix: &2yourprefix &6>> &r
 
 
 command /punish [<offlineplayer>]:
@@ -28,9 +28,26 @@ command /newoffence [<offlineplayer>]:
     wait 1 tick
     format slot 0 of player with chest named "&2Malicious Hacks &8| &7Ban duration 5 days" to run [make console execute command "bpm %arg-1%"]
     format slot 1 of player with chest named "&2Non Malicious Hacks &8| &7Ban duration 2 days" to run [make console execute command "bpnm %arg-1%"]
-    format slot 2 of player with hopper named "&2Low Spam &8| &7Mute duration 10 minutes" to run [make console execute command "mpl %arg-1%"]
-    format slot 3 of player with hopper named "&2High Spam &8| &7Mute duration 30 minutes" to run [make console execute command "mph %arg-1%"]
+    format slot 3 of player with hopper named "&2Low Spam &8| &7Mute duration 10 minutes" to run [make console execute command "mpl %arg-1%"]
+    format slot 4 of player with hopper named "&2High Spam &8| &7Mute duration 30 minutes" to run [make console execute command "mph %arg-1%"]
+    format slot 5 of player with hopper named "&2Spam Bot &8| &7Mute duration 1 hour" to run [make console execute command "mpb %arg-1%"]
+    format slot 2 of player with chest named "&2Spam Bot &8| &7Ban duration 1 day" to run [make console execute command "bpb %arg-1%"]
 
+
+
+
+command /mpb [<offlineplayer>]:
+  permission: punish.lmute
+  trigger:
+    broadcast "{@prefix}&fConsole has muted %arg-1% for 1 hour."
+    make console execute command "mute %arg-1% 1h Spam Bot"
+
+
+command /bpb [<offlineplayer>]:
+  permission: punish.bban
+  trigger:
+    broadcast "{@prefix}&fConsole has banned %arg-1% for 1 day."
+    make console execute command "tempban %arg-1% 1d Spam Bot"
 
 
 command /mpl [<offlineplayer>]:
