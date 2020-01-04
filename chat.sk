@@ -1,0 +1,27 @@
+options:
+  prefix: &2Chat &7>> &r
+
+
+
+command /chat [<text>]:
+  permission: chat.use
+  trigger:
+    if arg-1 is "clear":
+      loop 200 times:
+        broadcast ""
+      broadcast "{@prefix}&2Chat was cleared by &6%player%&2!"
+    if arg 1 is "off":
+      set {stopchat.on} to true
+      broadcast "{@prefix}&cChat was trun off by &6%player%&c&2!"
+    if arg 1 is "on":
+      set {stopchat.on} to false
+      broadcast "{@prefix}&2Chat was trun on by &6%player%&2!"          
+
+
+on chat:
+  if {stopchat.on} is true:
+    if player is op:
+      send "&2You are talking while the chat is off!"
+    else:
+      cancel event
+      send "{@prefix}&cYou cant do that the chat is off."
