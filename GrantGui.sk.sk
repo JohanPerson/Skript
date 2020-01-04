@@ -1,0 +1,91 @@
+options:
+  prefix: &6Ranks &r>> &r #You dont need to use a prefix. #and i havent added prefix cus i am lazy..
+  rankmessage: &2You gave %arg-1% a new rank! #You dont need to use a rank message.
+  permmessage: &2You gave %arg-1% a new permission! #You dont need to use a perm message.
+
+
+
+command /grant [<offlineplayer>]:
+  permission: grant.use
+  trigger:
+    open chest with 3 rows named "&2You are granting &6%arg-1%!" to player
+    wait 1 tick
+    format slot 12 of player with gold axe named "&2Ranks" to run [make player execute command "rankgui %arg-1%"]
+    format slot 22 of player with red wool named "&cClose" to close
+    format slot 14 of player with redstone torch named "&2Permissions" to run [make player execute command "permon %arg-1%"]
+    format slot 0 of player with light blue stained glass pane named "&r" to close
+    format slot 1 of player with light blue stained glass pane named "&r" to close
+    format slot 2 of player with light blue stained glass pane named "&r" to close
+    format slot 3 of player with light blue stained glass pane named "&r" to close
+    format slot 4 of player with light blue stained glass pane named "&r" to close
+    format slot 5 of player with light blue stained glass pane named "&r" to close
+    format slot 6 of player with light blue stained glass pane named "&r" to close
+    format slot 7 of player with light blue stained glass pane named "&r" to close
+    format slot 8 of player with light blue stained glass pane named "&r" to close
+
+
+
+command /permon [<offlineplayer>]:
+  permission: grant.perms
+  trigger:
+    open chest with 3 rows named "&2You are granting &6%arg-1%!" to player
+    wait 1 tick
+    format slot 9 of player with glass named "&2Fly" to run [make console execute command "lp user %arg-1% permission set essentials.fly true"]
+    format slot 10 of player with glass named "&2Gamemodes" to run [make console execute command "lp user %arg-1% permission set essentials.gamemode.all true"]
+    format slot 22 of player with yellow wool named "&2Remove Perms" to run [make player execute command "permoff %arg-1%"]
+    format slot 0 of player with light blue stained glass pane named "&r" to close
+    format slot 1 of player with light blue stained glass pane named "&r" to close
+    format slot 2 of player with light blue stained glass pane named "&r" to close
+    format slot 3 of player with light blue stained glass pane named "&r" to close
+    format slot 4 of player with light blue stained glass pane named "&r" to close
+    format slot 5 of player with light blue stained glass pane named "&r" to close
+    format slot 6 of player with light blue stained glass pane named "&r" to close
+    format slot 7 of player with light blue stained glass pane named "&r" to close
+    format slot 8 of player with light blue stained glass pane named "&r" to close
+    format slot 26 of player with red wool named "&cClose" to close
+    format slot 18 of player with arrow named "&2Back" to run [make player execute command "grant %arg-1%"]
+
+
+
+command /permoff [<offlineplayer>]:
+  permission: grant.perms
+  trigger:
+    open chest with 3 rows named "&2You are granting &6%arg-1%!" to player
+    wait 1 tick
+    format slot 9 of player with glass named "&2Fly" to run [make console execute command "lp user %arg-1% permission set essentials.fly false"]
+    format slot 10 of player with glass named "&2Gamemodes" to run [make console execute command "lp user %arg-1% permission set essentials.gamemode.all false"]
+    format slot 22 of player with yellow wool named "&2Add Perms" to run [make player execute command "permon %arg-1%"]
+    format slot 0 of player with light blue stained glass pane named "&r" to close
+    format slot 1 of player with light blue stained glass pane named "&r" to close
+    format slot 2 of player with light blue stained glass pane named "&r" to close
+    format slot 3 of player with light blue stained glass pane named "&r" to close
+    format slot 4 of player with light blue stained glass pane named "&r" to close
+    format slot 5 of player with light blue stained glass pane named "&r" to close
+    format slot 6 of player with light blue stained glass pane named "&r" to close
+    format slot 7 of player with light blue stained glass pane named "&r" to close
+    format slot 8 of player with light blue stained glass pane named "&r" to close
+    format slot 26 of player with red wool named "&cClose" to close
+    format slot 18 of player with arrow named "&2Back" to run [make player execute command "grant %arg-1%"]
+
+
+command /rankgui [<offlineplayer>]:
+  permission: grant.ranks
+  trigger:
+    open chest with 3 rows named "&2You are granting &6%arg-1%!" to player
+    wait 1 tick
+    format slot 9 of player with coal block named "&8Coal Rank" to run [make console execute command "lp user %arg-1% parent set coal"] #WARNING you need to use luckperms and have setup groups!
+    format slot 10 of player with iron block named "&fIron Rank" to run [make console execute command "lp user %arg-1% parent set iron"]
+    format slot 11 of player with gold block named "&eGold Rank" to run [make console execute command "lp user %arg-1% parent set gold"]
+    format slot 12 of player with diamond block named "&bDiamond Rank" to run [make console execute command "lp user %arg-1% parent set diamond"]
+    format slot 13 of player with emerald block named "&2Emerald Rank" to run [make console execute command "lp user %arg-1% parent set emerald"]
+    format slot 0 of player with light blue stained glass pane named "&r" to close
+    format slot 1 of player with light blue stained glass pane named "&r" to close
+    format slot 2 of player with light blue stained glass pane named "&r" to close
+    format slot 3 of player with light blue stained glass pane named "&r" to close
+    format slot 4 of player with light blue stained glass pane named "&r" to close
+    format slot 5 of player with light blue stained glass pane named "&r" to close
+    format slot 6 of player with light blue stained glass pane named "&r" to close
+    format slot 7 of player with light blue stained glass pane named "&r" to close
+    format slot 8 of player with light blue stained glass pane named "&r" to close
+    format slot 26 of player with red wool named "&cClose" to close
+    format slot 18 of player with arrow named "&2Back" to run [make player execute command "grant %arg-1%"]
