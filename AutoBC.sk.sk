@@ -1,0 +1,22 @@
+options:
+  prefix: &2Centenamilia &6>> &r
+  bctime: 100
+  bcmessage: &2Do you want any help with the skript message Johan(hashtag)6122 on discord. #sorry you cant use hashtag in there then it wont work...
+
+
+
+command /autobc [<text>]:
+  permission: autobc.use
+  trigger:
+    if arg-1 is "help":
+      send "------Help--------"
+      send "(/autobc manual) Manuly sends the broadcast."
+      send "(/autobc help) Displays this help message."
+      send "------Help--------"
+    if arg-1 is "manual":
+      broadcast "{@prefix}{@bcmessage}" #you dont need the prefix if you dont want to have it.
+
+
+
+every {@bctime} seconds: #you can change the broadcast time under options --> bctime.
+    broadcast "{@prefix}{@bcmessage}" #you dont need the prefix if you dont want to have it.
