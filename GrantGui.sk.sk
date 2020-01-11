@@ -10,7 +10,7 @@ command /grant [<offlineplayer>]:
   trigger:
     open chest with 3 rows named "&2You are granting &6%arg-1%!" to player
     wait 1 tick
-    format slot 12 of player with gold axe named "&2Ranks" to run [make player execute command "rankgui %arg-1%"]
+    format slot 12 of player with gold axe named "&2Ranks" to run [make player execute command "normalrankgui %arg-1%"]
     format slot 22 of player with red wool named "&cClose" to close
     format slot 14 of player with redstone torch named "&2Permissions" to run [make player execute command "permon %arg-1%"]
     format slot 0 of player with light blue stained glass pane named "&r" to close
@@ -68,7 +68,7 @@ command /permoff [<offlineplayer>]:
     format slot 18 of player with arrow named "&2Back" to run [make player execute command "grant %arg-1%"]
 
 
-command /rankgui [<offlineplayer>]:
+command /normalrankgui [<offlineplayer>]:
   permission: grant.ranks
   trigger:
     open chest with 3 rows named "&2You are granting &6%arg-1%!" to player
@@ -78,6 +78,34 @@ command /rankgui [<offlineplayer>]:
     format slot 11 of player with gold block named "&eGold Rank" to run [make console execute command "lp user %arg-1% parent set gold"]
     format slot 12 of player with diamond block named "&bDiamond Rank" to run [make console execute command "lp user %arg-1% parent set diamond"]
     format slot 13 of player with emerald block named "&2Emerald Rank" to run [make console execute command "lp user %arg-1% parent set emerald"]
+    format slot 14 of player with gray wool named "&7Default Rank" to run [make console execute command "lp user %arg-1% parent set default"]
+    format slot 22 of player with yellow wool named "&2Staff Ranks" to run [make player execute command "staffrankgui %arg-1%"]
+    format slot 0 of player with light blue stained glass pane named "&r" to close
+    format slot 1 of player with light blue stained glass pane named "&r" to close
+    format slot 2 of player with light blue stained glass pane named "&r" to close
+    format slot 3 of player with light blue stained glass pane named "&r" to close
+    format slot 4 of player with light blue stained glass pane named "&r" to close
+    format slot 5 of player with light blue stained glass pane named "&r" to close
+    format slot 6 of player with light blue stained glass pane named "&r" to close
+    format slot 7 of player with light blue stained glass pane named "&r" to close
+    format slot 8 of player with light blue stained glass pane named "&r" to close
+    format slot 26 of player with red wool named "&cClose" to close
+    format slot 18 of player with arrow named "&2Back" to run [make player execute command "grant %arg-1%"]
+
+
+
+
+command /staffrankgui [<offlineplayer>]:
+  permission: grant.ranks
+  trigger:
+    open chest with 3 rows named "&2You are granting &6%arg-1%!" to player
+    wait 1 tick
+    format slot 9 of player with blue wool named "&9Helper Rank" to run [make console execute command "lp user %arg-1% parent set helper"]
+    format slot 10 of player with purple wool named "&5Builder Rank" to run [make console execute command "lp user %arg-1% parent set builder"]
+    format slot 11 of player with green wool named "&2Mod Rank" to run [make console execute command "lp user %arg-1% parent set mod"]
+    format slot 12 of player with red wool named "&bAdmin Rank" to run [make console execute command "lp user %arg-1% parent set admin"]
+    format slot 13 of player with redstone block named "&cManager Rank" to run [make console execute command "lp user %arg-1% parent set manager"]
+    format slot 22 of player with yellow wool named "&2Normal Ranks" to run [make player execute command "normalrankgui %arg-1%"]
     format slot 0 of player with light blue stained glass pane named "&r" to close
     format slot 1 of player with light blue stained glass pane named "&r" to close
     format slot 2 of player with light blue stained glass pane named "&r" to close
