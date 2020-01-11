@@ -9,6 +9,7 @@ command /chat [<text>]:
     if arg-1 is "clear":
       loop 200 times:
         broadcast ""
+      broadcast "{@prefix}&2The chat has been cleared"
     if arg-1 is "off":
       set {chat} to false
       broadcast "{@prefix}&cChat is now muted"
@@ -18,11 +19,15 @@ command /chat [<text>]:
     if arg-1 is not set:
       open chest with 3 rows named "&2Chat System" to player
       wait 1 tick
-      format slot 13 of player with sign named "&cChat Clear" to run [make player execute command "chat clear"]
-      format slot 11 of player with red wool named "&cChat Mute" to run [make player execute command "chat off"]
-      format slot 15 of player with red wool named "&cChat Unmute" to run [make player execute command "chat on"]
+      format slot 13 of player with oak sign named "&cChat Clear" with lore "&eClears the chat" to run [make player execute command "chat clear"]
+      format slot 11 of player with red wool named "&cChat Mute" with lore "&eMutes the chat" to run [make player execute command "chat off"]
+      format slot 15 of player with red wool named "&2Chat Unmute" with lore "&eUnmutes the chat" to run [make player execute command "chat on"]
 
 
 on chat:
   if {chat} is false:
-    send "{@prefix}&cThe chat is muted"
+    if player has permission "chat.admin":
+      send "{@prefix}&cYou are talking while the chat is muted"
+    else:
+      send "{@prefix}&cThe chat is muted"
+      cancel event
