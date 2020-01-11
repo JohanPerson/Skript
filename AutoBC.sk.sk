@@ -1,7 +1,7 @@
 options:
-  prefix: &2Centenamilia &6>> &r
+  prefix: &2DribblePVP &6>> &r
   bctime: 100
-  bcmessage: &2Do you want any help with the skript message Johan(hashtag)6122 on discord. #sorry you cant use hashtag in there then it wont work...
+  bcmessage: &2Do you want my scripts? Go to: https://github.com/JohanPerson/Skript
 
 
 
@@ -12,11 +12,18 @@ command /autobc [<text>]:
       send "------Help--------"
       send "(/autobc manual) Manuly sends the broadcast."
       send "(/autobc help) Displays this help message."
+      send "(/autobc off/on) Turns on or off autobc."
       send "------Help--------"
     if arg-1 is "manual":
       broadcast "{@prefix}{@bcmessage}" #you dont need the prefix if you dont want to have it.
-
-
+    if arg-1 is "on":
+      set {autobc.state} to true
+      send "&cYou turned on AutoBC"
+    if arg-1 is "off":
+      set {autobc.state} to false
+      send "&cYou turned off AutoBC"
 
 every {@bctime} seconds: #you can change the broadcast time under options --> bctime.
+  if {autobc.state} is true:
     broadcast "{@prefix}{@bcmessage}" #you dont need the prefix if you dont want to have it.
+  if {autobc.state} is false:
