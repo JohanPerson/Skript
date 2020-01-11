@@ -1,4 +1,4 @@
-#when you have enabled the script, execute the command "/gamerule showDeathMessages" before use.
+#when you have enabled the script, execute the command "/gamerule showDeathMessages false" before use.
 
 
 options:
