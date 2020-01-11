@@ -1,0 +1,19 @@
+#THIS WILL ONLY WORK WITH THE "Chat, Punish and Grant" Modules!
+
+
+command /player [<offlineplayer>]:
+  permission: player.menu
+  trigger:
+    open chest with 4 rows named "&2Player Menu" to player
+    wait 1 tick
+    format slot 11 of player with iron axe named "&2Punish %arg-1%" to run [make player execute command "punish %arg-1%"]
+    format slot 13 of player with green wool named "&2Grant %arg-1%" to run [make player execute command "grant %arg-1%"]
+    format slot 31 of player with green wool named "&2Chat Settings" to run [make player execute command "chat"]
+    format slot 27 of player with light blue stained glass pane named "&r" to close
+    format slot 28 of player with light blue stained glass pane named "&r" to close
+    format slot 29 of player with light blue stained glass pane named "&r" to close
+    format slot 30 of player with light blue stained glass pane named "&r" to close
+    format slot 32 of player with light blue stained glass pane named "&r" to close
+    format slot 33 of player with light blue stained glass pane named "&r" to close
+    format slot 34 of player with light blue stained glass pane named "&r" to close
+    format slot 35 of player with light blue stained glass pane named "&r" to close
