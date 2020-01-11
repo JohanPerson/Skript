@@ -4,24 +4,25 @@ options:
 
 
 command /chat [<text>]:
-  permission: chat.use
+  permission: chat.admin
   trigger:
     if arg-1 is "clear":
       loop 200 times:
         broadcast ""
-      broadcast "{@prefix}&2Chat was cleared by &6%player%&2!"
-    if arg 1 is "off":
-      set {stopchat.on} to true
-      broadcast "{@prefix}&cChat was trun off by &6%player%&c&2!"
-    if arg 1 is "on":
-      set {stopchat.on} to false
-      broadcast "{@prefix}&2Chat was trun on by &6%player%&2!"          
+    if arg-1 is "off":
+      set {chat} to false
+      broadcast "{@prefix}&cChat is now muted"
+    if arg-1 is "on":
+      set {chat} to true
+      broadcast "{@prefix}&2Chat is now ummuted"
+    if arg-1 is not set:
+      open chest with 3 rows named "&2Chat System" to player
+      wait 1 tick
+      format slot 13 of player with sign named "&cChat Clear" to run [make player execute command "chat clear"]
+      format slot 11 of player with red wool named "&cChat Mute" to run [make player execute command "chat off"]
+      format slot 15 of player with red wool named "&cChat Unmute" to run [make player execute command "chat on"]
 
 
 on chat:
-  if {stopchat.on} is true:
-    if player is op:
-      send "&2You are talking while the chat is off!"
-    else:
-      cancel event
-      send "{@prefix}&cYou cant do that the chat is off."
+  if {chat} is false:
+    send "{@prefix}&cThe chat is muted"
