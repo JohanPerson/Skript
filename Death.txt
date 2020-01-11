@@ -1,0 +1,13 @@
+#when you have enabled the script, execute the command "/gamerule showDeathMessages" before use.
+
+
+options:
+  prefix: &2Death &7>> &r
+  message: &cWas killed by
+
+
+on death of player:
+  if attacker is not set:
+    broadcast "{@prefix}&c%player% {@message} Console"
+  if attacker is set:
+    broadcast "{@prefix}&c%player% {@message} %attacker%"
