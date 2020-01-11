@@ -1,0 +1,74 @@
+#Script made by Johan#6122
+#No copyright.
+
+
+
+
+options:
+  prefix: &9Build &7>> &r# this is your prefix before the messages.
+
+
+#Do not change anything down here if you dont know how it works.
+
+on join:
+  if player has permission "buildmode.use":
+    make player execute command "buildoff"
+    set {buildmode.state.%player%} to false
+
+
+command /build [<text>]:
+  permission: buildmode.use
+  trigger:
+    if arg-1 is "on":
+      set {buildmode.state.%player%} to true
+      send "{@prefix}&2You are now in &6Buildmode!"
+    if arg-1 is "off":
+      set {buildmode.state.%player%} to false
+      send "{@prefix}&2You left &6Buildmode!"
+    if arg-1 is "state":
+      if {buildmode.state.%player%} is true:
+        send "&7-----&fBuildState&7------"
+        send "&7You are currently in BuildMode!"
+        send "&7-----&fBuildState&7------"
+      if {buildmode.state.%player%} is false:
+        send "&7-----&fBuildState&7------"
+        send "&7You are currently not in BuildMode!"
+        send "&7-----&fBuildState&7------"
+
+
+
+
+
+on break:
+  if player has permission "buildmode.use":
+    if {buildmode.state.%player%} is false:
+      cancel event
+      send "&cYou are not in &6buildmode!"
+  else:
+    cancel event
+
+
+on place:
+  if player has permission "buildmode.use":
+    if {buildmode.state.%player%} is false:
+      cancel event
+      send "&cYou are not in &6buildmode!"
+  else:
+    cancel event
+
+
+
+
+command /buildstate:
+  permission: buildmode.use
+  trigger:
+    if {buildmode.state.%player%} is true:
+      send "&7-----&fBuildState&7------"
+      send "&7You are currently in BuildMode!"
+      send "&7-----&fBuildState&7------"
+    if {buildmode.state.%player%} is false:
+      send "&7-----&fBuildState&7------"
+      send "&7You are currently not in BuildMode!"
+      send "&7-----&fBuildState&7------"
+
+    
