@@ -1,0 +1,12 @@
+command /setspawn:
+        permission: core.spawn
+        trigger:
+                set {spawn} to location of player
+                send "&bSet the server Spawn to your location" to player
+
+
+command /spawn:
+        trigger:
+                teleport player to {spawn}
+                send "&bTeleporting to &6Spawn&c!"
+
